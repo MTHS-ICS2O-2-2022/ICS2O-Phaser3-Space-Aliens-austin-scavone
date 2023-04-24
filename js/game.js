@@ -14,7 +14,7 @@ const splashScene = new SplashScene()
 const titleScene = new TitleScene()
 
 //* Game scene */
-const splashScene = new SplashScene ()
+const SplashScene = new SplashScene ()
 const config = {
   type:Phaser.Auto,
   width: 1920,
