@@ -1,29 +1,68 @@
 /* global Phaser */
 
-// Copyright (c) 2020 Mr. Coxall All rights reserved
+// Copyright (c) 2022 austin scavone All rights reserved
 //
-// Created by:austin scavone
-// Created on: april 2023
-// This is the Splash Scene
+// Created by: austin scavone
+// Created on: nov 2022
+// This is Splash Scene
 
+/**
+ * this class is the splash scene.
+ */
 class SplashScene extends Phaser.Scene {
-  constructor () {
-    super({ key: 'splashScene'})
-}
+  /**
+   * This mathod is the construtor.
+   */
+  constructor() {
+    super({ key: "splashScene" })
 
-init (data) {
-  this.camera.main.setBackgroundColor('#ffffff')
-}
+    this.SplashSceneBackgroundImage = null
+  }
 
-preload () {
-  console.log('splashScene')
-}
+  /**
+   * Can be defined on your own scenes
+   * This mathod is called by the Scene Manager when  the scene start,
+   *  before preload() and crate().
+   *  @param {object} data - Any data passed via ScenePlugin.add() or ScenePlugin.start().
+   */
+  init(data) {
+    this.cameras.main.setBackgroundColor("ffffff")
+  }
 
-create (data) {
-}
+  /**
+   * can be defined on your own scenes.
+   * use it to load assets.
+   */
+  preload() {
+    console.log("Splash Scene");
+    this.load.image("splashSceneBackground", "./assets/splashSceneImage.png")
+  }
 
-update (time, delta){
-  this.scene.switch('titleScene') 
+  /**
+   * can be defined on your own scene.
+   * use it to create your game objects.
+   * @param {object} data - Any data passed via ScenePlugin.add() or ScenePlugin.start().
+   */
+  create(data) {
+    this.SplashSceneBackgroundImage = this.add.sprite(
+      0,
+      0,
+      "splashSceneBackground"
+    )
+    this.SplashSceneBackgroundImage.x = 1920 / 2
+    this.SplashSceneBackgroundImage.y = 1080 / 2
+  }
+
+  /**
+   * this should beoverridden by your own Scenes.
+   * This mathod is called once per game step while the scene is running.
+   * @param {number} time - The current time.
+   * @param {number} delta - The delta time in ms since the last frame.
+   */
+  update(time, delta) {
+    if (time > 3000) {
+      this.scene.switch("titleScene")
+    }
   }
 }
 

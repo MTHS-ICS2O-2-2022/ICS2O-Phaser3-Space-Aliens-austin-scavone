@@ -1,45 +1,54 @@
 /* global Phaser */
 
-// Copyright (c) 2020 Mr. Coxall All rights reserved
+// Copyright (c) 2022 austin scavone All rights reserved
 //
-// Created by:austin scavone
-// Created on: april 2023
-// This is the Phaser3 Configuration file
+// Created by: austin scavone
+// Created on: nov 2022
+// This is the phaser3 game configuration file
 
-import SplashScene from './splashScene.js'
-import TitleScene from './titleScenee.js'
+// scene import statements
+import SplashScene from "./splashScene.js"
+import TitleScene from "./titleScene.js"
+import MenuScene from "./menuScene.js"
+import GameScene from "./gameScene.js"
 
-//Our game scenes
+// crate the new scenes
 const splashScene = new SplashScene()
 const titleScene = new TitleScene()
+const menuScene = new MenuScene()
+const gameScene = new GameScene()
 
-//* Game scene */
-const SplashScene = new SplashScene ()
+/**
+ * start phaser game.
+ */
 const config = {
-  type:Phaser.Auto,
+  type: Phaser.AUTO,
   width: 1920,
-  height:1080,
-  physics: { 
-    default: 'arcade',
+  height: 1080,
+  physics: {
+    default: "arcade",
     arcade: {
-      debug: true
-  }
-},
-  // set background color
-  backgroundColor:0x5f6e7a,
+      debug: false,
+    },
+  },
+  //set background color
+  backgroundColor: 0x5f6e7a,
   scale: {
     mode: Phaser.Scale.FIT,
-    //we place it in the middle of the page
-    autocenter: Phaser.Scale.Center_BOTH
-  }
-}
+    //we replaced it in the middle of the page
+    autoCenter: Phaser.Scale.CENTER_BOTH,
+  },
+};
 
 const game = new Phaser.Game(config)
+console.log(game)
 
 // load scenes
-//NOTE: remember any "key" is global and CAN NOT be reused!
-game.scene.add ('splashScene' , splashScene)
-game.scene.add ('titleScene' , titleScene)
+// note: remember any "key" is global and CAN NOT be reused!
+game.scene.add("splashScene", splashScene)
+game.scene.add("titleScene", titleScene)
+game.scene.add("menuScene", menuScene)
+game.scene.add("gameScene", gameScene)
 
-//start title
-game.scene.start('splashScene')
+// the start scene
+game.scene.start("splashScene")
